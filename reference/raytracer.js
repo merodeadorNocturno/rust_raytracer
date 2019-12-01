@@ -1,31 +1,46 @@
-var Vector = /** @class */ (function () {
+var Vectorjsjs = /** @class */ (function () {
     function Vector(x, y, z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
-    Vector.times = function (k, v) { return new Vector(k * v.x, k * v.y, k * v.z); };
-    Vector.minus = function (v1, v2) { return new Vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z); };
-    Vector.plus = function (v1, v2) { return new Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z); };
-    Vector.dot = function (v1, v2) { return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z; };
-    Vector.mag = function (v) { return Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z); };
+    Vector.times = function (k, v) {
+      return new Vector(k * v.x, k * v.y, k * v.z);
+    };
+    Vector.minus = function (v1, v2) {
+      return new Vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+    };
+    Vector.plus = function (v1, v2) {
+      return new Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+    };
+    Vector.dot = function (v1, v2) {
+      return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    };
+    Vector.mag = function (v) {
+      return Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+    };
     Vector.norm = function (v) {
         var mag = Vector.mag(v);
         var div = (mag === 0) ? Infinity : 1.0 / mag;
         return Vector.times(div, v);
     };
     Vector.cross = function (v1, v2) {
-        return new Vector(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
+        return new Vector(
+          v1.y * v2.z - v1.z * v2.y,
+          v1.z * v2.x - v1.x * v2.z,
+          v1.x * v2.y - v1.y * v2.x
+        );
     };
     return Vector;
 }());
-var Color = /** @class */ (function () {
+var Colorjs = /** @class */ (function () {
     function Color(r, g, b) {
         this.r = r;
         this.g = g;
         this.b = b;
     }
-    Color.scale = function (k, v) { return new Color(k * v.r, k * v.g, k * v.b); };
+    Color.scale = function (k, v) {
+      return new Color(k * v.r, k * v.g, k * v.b); };
     Color.plus = function (v1, v2) { return new Color(v1.r + v2.r, v1.g + v2.g, v1.b + v2.b); };
     Color.times = function (v1, v2) { return new Color(v1.r * v2.r, v1.g * v2.g, v1.b * v2.b); };
     Color.toDrawingColor = function (c) {
@@ -43,7 +58,7 @@ var Color = /** @class */ (function () {
     Color.defaultColor = Color.black;
     return Color;
 }());
-var Camera = /** @class */ (function () {
+var Camerajs = /** @class */ (function () {
     function Camera(pos, lookAt) {
         this.pos = pos;
         var down = new Vector(0.0, -1.0, 0.0);
@@ -53,7 +68,7 @@ var Camera = /** @class */ (function () {
     }
     return Camera;
 }());
-var Sphere = /** @class */ (function () {
+var Spherejs = /** @class */ (function () {
     function Sphere(center, radius, surface) {
         this.center = center;
         this.surface = surface;
@@ -79,7 +94,7 @@ var Sphere = /** @class */ (function () {
     };
     return Sphere;
 }());
-var Plane = /** @class */ (function () {
+var Planejs = /** @class */ (function () {
     function Plane(norm, offset, surface) {
         this.surface = surface;
         this.normal = function (pos) { return norm; };
@@ -96,7 +111,7 @@ var Plane = /** @class */ (function () {
     }
     return Plane;
 }());
-var Surfaces;
+var Surfacesjs;
 (function (Surfaces) {
     Surfaces.shiny = {
         diffuse: function (pos) { return Color.white; },
@@ -125,7 +140,7 @@ var Surfaces;
         roughness: 150
     };
 })(Surfaces || (Surfaces = {}));
-var RayTracer = /** @class */ (function () {
+var RayTracerjs = /** @class */ (function () {
     function RayTracer() {
         this.maxDepth = 5;
     }
@@ -212,7 +227,7 @@ var RayTracer = /** @class */ (function () {
     };
     return RayTracer;
 }());
-function defaultScene() {
+function defaultScenejs() {
     return {
         things: [
             new Plane(new Vector(0.0, 1.0, 0.0), 0.0, Surfaces.checkerboard),
@@ -228,7 +243,7 @@ function defaultScene() {
         camera: new Camera(new Vector(3.0, 2.0, 4.0), new Vector(-1.0, 0.5, 0.0))
     };
 }
-function exec() {
+function execjs() {
     var canv = document.createElement("canvas");
     canv.width = 256;
     canv.height = 256;
