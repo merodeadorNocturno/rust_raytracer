@@ -2,15 +2,15 @@ use crate::classes::vector::Vector;
 use crate::interfaces::{ Ray, Surface, Intersection, Intersect };
 
 pub struct Sphere {
-  pub radius2: f64,
   pub center: Vector,
+  pub radius2: f64,
   pub surface: Surface,
 }
 
 impl Sphere {
   pub fn new(mut self, center: Vector, radius: f64, surface: Surface) {
-    self.radius2 = radius.powf(2.0);
     self.center = center;
+    self.radius2 = radius.powf(2.0);
     self.surface = surface;
   }
 

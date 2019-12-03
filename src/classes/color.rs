@@ -55,11 +55,7 @@ impl Color {
 
   pub fn to_drawing_color(c: Color) -> Color {
     let legalize = |d| {
-      if d > 1.0 {
-        1.0
-      } else {
-        d
-      }
+      if d > 1.0 { 1.0 } else { d };
     };
     Color::new(
       legalize(c.r).round() * 255.0,
