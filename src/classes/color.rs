@@ -54,8 +54,14 @@ impl Color {
   }
 
   pub fn to_drawing_color(c: Color) -> Color {
-    let legalize = |d| {
-      if d > 1.0 { 1.0 } else { d };
+    let legalize = |d: f64| -> f64 {
+      let mut legal: f64;
+      if d > 1.0 { 
+        legal = 1.0;
+      } else {
+        legal = d; 
+      }
+      legal
     };
     Color::new(
       legalize(c.r).round() * 255.0,
