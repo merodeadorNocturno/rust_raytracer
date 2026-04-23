@@ -11,3 +11,5 @@ Cargo.lock
 
 # Remove logs
 rls*.log
+
+.DS_Store
