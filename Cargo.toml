@@ -6,6 +6,6 @@ path = "src/main.rs"
 name = "raytracer"
 version = "0.1.0"
 authors = ["tonamartinez <tonatiuh.martinez@globant.com>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
